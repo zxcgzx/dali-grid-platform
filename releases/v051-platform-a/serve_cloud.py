@@ -17,9 +17,11 @@ class CloudHandler(DemoHandler):
     def origin_ok(self):
         host = self.headers.get('Host', '')
         origin = self.headers.get('Origin')
+        shared_link = (self.command == 'GET' and urlsplit(self.path).path in ('/', '/index.html')
+                       and self.headers.get('Sec-Fetch-Mode') == 'navigate' and not origin)
         return (host in self.server.allowed_hosts
                 and (not origin or origin in self.server.allowed_origins)
-                and self.headers.get('Sec-Fetch-Site') != 'cross-site')
+                and (self.headers.get('Sec-Fetch-Site') != 'cross-site' or shared_link))
 
     def authorized(self):
         if not self.server.access_password:

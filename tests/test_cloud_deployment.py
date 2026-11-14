@@ -64,6 +64,14 @@ class CloudDeploymentTest(unittest.TestCase):
         finally:
             self.server.access_password = ''
 
+    def test_shared_link_navigation(self):
+        c = http.client.HTTPConnection('127.0.0.1', self.server.server_port, timeout=5)
+        c.request('GET', '/', headers={'Host': 'platform.example', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'navigate'})
+        response = c.getresponse()
+        self.assertEqual(response.status, 200)
+        response.read()
+        c.close()
+
     def test_proxy_denied_until_allowlisted(self):
         status, _ = self.request('/api/proxy', {'service': 'primary', 'url': 'https://unapproved.example/v1'})
         self.assertEqual(status, 403)

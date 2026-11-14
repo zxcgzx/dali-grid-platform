@@ -1,0 +1,7 @@
+/* Product identity only; map/data names and existing research styling stay intact. */
+.platform-brand { display:block; padding:14px 8px 0; }
+.platform-brand strong { display:block; font-size:16px; line-height:1.6; letter-spacing:0; white-space:normal; overflow-wrap:anywhere; color:#3b2725; }
+.platform-brand > span { display:block; white-space:normal; font-size:11px; line-height:1.65; margin-top:3px; color:#817570; }
+.breadcrumb { display:block; overflow-wrap:anywhere; }
+.topbar > div:first-child { min-width:0; }
+@media(max-width:760px) { .platform-brand { text-align:center; } .topbar { height:auto; min-height:76px; padding-top:10px; padding-bottom:10px; } .topbar h1 { font-size:17px; line-height:1.5; } footer { gap:10px; flex-wrap:wrap; } }

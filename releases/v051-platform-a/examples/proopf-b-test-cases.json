@@ -1,0 +1,50 @@
+{
+  "source": "ProOPF: Benchmarking and Improving LLMs for Professional-Grade Power Systems Optimization Modeling, Appendix E.1-E.4, ProOPF-B Evaluation Samples",
+  "source_note": "界面与模型调用默认使用中文题干；prompt_en保留论文Natural Language (P)原文用于对照与追溯。中文文本为对应原文的界面翻译，不替代论文英文原文。",
+  "cases": [
+    {
+      "id": "E1-L1",
+      "level": "L1",
+      "level_name_zh": "显式参数修改型建模",
+      "appendix": "E.1",
+      "title": "IEEE 39节点系统显式参数修改",
+      "type": "显式数值参数修改",
+      "summary_zh": "针对IEEE 39节点交流最优潮流模型，按明确数值要求修改负荷、机组出力上限、节点电压下限和线路电抗。",
+      "prompt_zh": "请针对IEEE 39节点系统（case39）建立交流最优潮流（ACOPF）模型。将1号母线有功负荷乘以1.5；将32号母线所连接的全部发电机最大有功出力设为500 MW；将10号母线的最低电压幅值限制（VMIN）设为0；将2号母线与25号母线之间线路的电抗设为0.01；将潮流优化约束容差（opf.violation）设为1e-8。请生成对应的MATPOWER代码。",
+      "prompt_en": "Perform AC optimal power flow (ACOPF) on the IEEE 39-bus system (case39). Scale the active power demand at bus 1 by a factor of 1.5. Set the maximum active power output of all generators at bus 32 to 500 MW. Relax the minimum voltage magnitude constraint at bus 10 by setting VMIN to 0. Set the branch reactance for the line between bus 2 and bus 25 to 0.01. Set the OPF violation tolerance (opf.violation) to 1e-8, and write the corresponding MATPOWER code."
+    },
+    {
+      "id": "E2-L2",
+      "level": "L2",
+      "level_name_zh": "场景语义参数推理型建模",
+      "appendix": "E.2",
+      "title": "IEEE 14节点系统运行场景语义推理",
+      "type": "场景语义推断参数变化方向",
+      "summary_zh": "根据深夜工业负荷下降、线路电容充电效应及节点电压升高等运行现象，推断相关负荷与无功补偿设备的调整方向。",
+      "prompt_zh": "某区域电网采用IEEE 14节点系统（case14）建模。深夜时段，3号母线工业负荷显著下降，有功和无功需求均明显减少。远距离输电线路出现较明显的电容充电效应，导致8号母线电压升高。为降低电压超过上限的风险，需要切除5号母线的并联电容器组。同时，3号母线无功需求下降进一步加剧电压升高现象。请将潮流优化约束容差（opf.violation）设为1e-6，采用MIPS求解器求解交流最优潮流（ACOPF），并生成对应MATPOWER代码。所有由运行场景推断的参数均使用占位符表示，参数取值应符合上述变化方向。 占位符按 object_parameter_id 形式命名，表示符合场景变化方向的修改后参数值。",
+      "prompt_en": "A regional grid is modeled using the IEEE 14-bus system (case14). During the late-night hours, industrial loads at bus 3 are significantly reduced, causing both active and reactive power demand to decrease substantially. The long-distance transmission lines exhibit pronounced capacitive charging effects, leading to elevated voltage levels at bus 8. To mitigate the risk of voltage exceeding the upper limit, shunt capacitor banks at bus 5 need to be disconnected. Meanwhile, the reduced reactive power demand at bus 3 further contributes to the voltage rise phenomenon. Set opf.violation to 1e-6, use MIPS as the ACOPF solver, and generate the corresponding MATPOWER code. All scenario-driven parameters are assigned using placeholder values of the form object parameter id, which represent the post-modification values consistent with the specified scenario directions."
+    },
+    {
+      "id": "E3-L3",
+      "level": "L3",
+      "level_name_zh": "显式参数与模型结构扩展型建模",
+      "appendix": "E.3",
+      "title": "IEEE 39节点系统目标函数结构扩展",
+      "type": "结构扩展与显式参数修改",
+      "summary_zh": "建立直流最优潮流模型，在基础发电成本之外增加线路相角差二次惩罚项，并完成显式参数修改。",
+      "prompt_zh": "请针对IEEE 39节点系统（case39）建立直流最优潮流（DCOPF）模型。在基础算例默认发电成本之外，增加所有在役输电线路的相角差二次惩罚项，以抑制过大的相角分离，惩罚权重β=10。将1号母线有功负荷乘以1.5；将32号母线所连接发电机的最大有功出力设为500 MW；将2号母线与25号母线之间线路的电抗设为0.01；将潮流优化约束容差（opf.violation）设为1e-8。请生成对应的MATPOWER代码。",
+      "prompt_en": "Build a DC optimal power flow (DCOPF) optimization problem for the IEEE 39-bus system (case39). In addition to the default generation cost in the base case, add a quadratic penalty on phase-angle differences across all in-service transmission lines to discourage excessive angle separation (penalty weight beta = 10). Scale the active power demand at bus 1 by 1.5, set the maximum active power output of the generator(s) connected to bus 32 to 500 MW, and set the branch reactance of the line between bus 2 and bus 25 to 0.01. Assign opf.violation to 1e-8, and create the corresponding MATPOWER code."
+    },
+    {
+      "id": "E4-L4",
+      "level": "L4",
+      "level_name_zh": "场景语义推理与模型结构扩展型建模",
+      "appendix": "E.4",
+      "title": "IEEE 39节点系统场景推理与结构扩展",
+      "type": "场景语义推断与结构扩展",
+      "summary_zh": "从低负荷、机组部分检修和输电线路升级推断参数变化方向，同时扩展目标函数。",
+      "prompt_zh": "请针对IEEE 39节点系统（case39）建立直流最优潮流（DCOPF）模型。在低负荷运行时段，由于工业用电减少，1号母线有功负荷预计下降；32号母线所连接的一台发电机处于部分检修状态，其可用最大有功出力降低；2号母线与25号母线之间的输电线路经过升级改造，线路电抗降低。为抑制该运行条件下过大的相角分离，在所有在役输电线路上增加相角差二次惩罚项，惩罚权重β=10；将潮流优化约束容差（opf.violation）设为1e-8。请生成对应的MATPOWER代码。场景驱动的参数使用占位符表示，取值方向应符合上述运行场景。 占位符按 object_parameter_id 形式命名，表示符合场景变化方向的修改后参数值。",
+      "prompt_en": "Build a DC optimal power flow (DCOPF) optimization problem for the IEEE 39-bus system (case39). During a low-load operating period, the active power demand at bus 1 is expected to decrease because of reduced industrial consumption. A generator connected to bus 32 is undergoing partial maintenance, reducing its available maximum active power output. In addition, a transmission upgrade on the line between bus 2 and bus 25 lowers the branch reactance. To discourage excessive phase-angle separation under this stressed operating condition, add a quadratic penalty on phase-angle differences across all in-service transmission lines with penalty weight beta = 10. Assign opf.violation to 1e-8, and generate the corresponding MATPOWER code. All scenario-driven parameters are assigned using placeholder values of the form object parameter id, which represent the post-modification values consistent with the specified scenario directions."
+    }
+  ]
+}

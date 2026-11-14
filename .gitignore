@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+artifacts/
+reference/
+references/
+releases/v05-visualization/
+*.zip
+*.log

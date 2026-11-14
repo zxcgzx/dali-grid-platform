@@ -1,0 +1,82 @@
+{
+  "profile": "four-node-transport-switching-v1",
+  "duration_hours": 1.0,
+  "nodes": [
+    {
+      "id": 1,
+      "load_mw": 0
+    },
+    {
+      "id": 2,
+      "load_mw": 0
+    },
+    {
+      "id": 3,
+      "load_mw": 50
+    },
+    {
+      "id": 4,
+      "load_mw": 100
+    }
+  ],
+  "generators": [
+    {
+      "id": "G1",
+      "node": 1,
+      "pmin_mw": 0.0,
+      "pmax_mw": 100.0,
+      "cost_yuan_mwh": 300.0
+    },
+    {
+      "id": "G2",
+      "node": 2,
+      "pmin_mw": 0.0,
+      "pmax_mw": 100.0,
+      "cost_yuan_mwh": 500.0
+    }
+  ],
+  "lines": [
+    {
+      "id": "L12",
+      "from": 1,
+      "to": 2,
+      "capacity_mw": 50.0,
+      "fixed_cost_yuan": 50.0
+    },
+    {
+      "id": "L14",
+      "from": 1,
+      "to": 4,
+      "capacity_mw": 50.0,
+      "fixed_cost_yuan": 50.0
+    },
+    {
+      "id": "L23",
+      "from": 2,
+      "to": 3,
+      "capacity_mw": 100.0,
+      "fixed_cost_yuan": 50.0
+    },
+    {
+      "id": "L24",
+      "from": 2,
+      "to": 4,
+      "capacity_mw": 100.0,
+      "fixed_cost_yuan": 150.0
+    },
+    {
+      "id": "L34",
+      "from": 3,
+      "to": 4,
+      "capacity_mw": 100.0,
+      "fixed_cost_yuan": 50.0
+    }
+  ],
+  "assumptions": {
+    "network_model": "lossless_transport",
+    "fixed_cost_basis": "per_period_if_on",
+    "bidirectional": true,
+    "allow_load_shedding": false,
+    "n_minus_one": false
+  }
+}

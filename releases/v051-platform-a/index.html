@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#94070a">
+  <title>运行方式智能调整平台A</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="branding.css?v=20261113-1">
+  <link rel="stylesheet" href="research.css?v=20261113-3">
+  <link rel="stylesheet" href="workflow.css?v=4">
+  <link rel="stylesheet" href="visualization.css?v=5">
+  <link rel="stylesheet" href="platform-a.css?v=051a">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" aria-label="平台导航">
+    <div class="brand-area">
+      <div class="partner-board" role="group" aria-label="项目单位标识：北京大学、中国南方电网、怀柔实验室">
+        <div class="partner-logo partner-logo--pku">
+          <img src="assets/partners-official/pku.png" width="394" height="111" alt="北京大学 Peking University" decoding="async" fetchpriority="high">
+        </div>
+        <div class="partner-logo partner-logo--csg">
+          <img src="assets/partners-official/csg.png" width="228" height="40" alt="中国南方电网 China Southern Power Grid" decoding="async">
+        </div>
+        <div class="partner-logo partner-logo--huairou">
+          <img src="assets/partners-official/huairou.png" width="234" height="62" alt="怀柔实验室 Huairou Laboratory" decoding="async">
+        </div>
+      </div>
+      <div class="platform-brand">
+        <strong>运行方式智能调整平台A</strong>
+        <span>需求建模 · 校验协同 · 优化决策</span>
+      </div>
+    </div>
+    <div class="side-caption">工作空间</div>
+    <nav id="nav" aria-label="功能导航">
+      <button class="nav active" data-page="home"><span class="nav-symbol" aria-hidden="true">▦</span><span>工作台</span></button>
+      <button class="nav" data-page="request"><span class="nav-symbol" aria-hidden="true">⌕</span><span>需求理解</span></button>
+      <button class="nav" data-page="model"><span class="nav-symbol" aria-hidden="true">◇</span><span>动态建模</span></button>
+      <button class="nav" data-page="math"><span class="nav-symbol" aria-hidden="true">∑</span><span>数学模型</span></button>
+      <button class="nav" data-page="check"><span class="nav-symbol" aria-hidden="true">✓</span><span>模型校验</span></button>
+      <button class="nav" data-page="risk"><span class="nav-symbol" aria-hidden="true">◈</span><span>风险评估</span></button>
+      <button class="nav" data-page="solve"><span class="nav-symbol" aria-hidden="true">▷</span><span>优化求解</span></button>
+      <button class="nav" data-page="result"><span class="nav-symbol" aria-hidden="true">⌁</span><span>结果分析</span></button>
+      <button class="nav" data-page="data"><span class="nav-symbol" aria-hidden="true">▤</span><span>数据与模型</span></button>
+    </nav>
+    <div class="profile"><div class="avatar">研</div><div><b>科研演示环境</b><small>贯通演示 V0.5.1 · A</small></div><i></i></div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div><small class="breadcrumb">运行方式智能调整平台A / <span id="crumb">工作台</span></small><h1 id="heading">运行方式智能调整平台A</h1></div>
+      <div class="top-right"><span class="pill"><i></i> 原型演示环境</span><span class="user">项目成员</span></div>
+    </header>
+    <div class="warning"><b>演示数据提示</b><span>条件确认、模型审核与静态检查可操作；四节点示例支持本机真实计算。通用模型求解与专业算法需对应服务，示例不代表实际电网安全结论。</span></div>
+    <section id="view" class="view"></section>
+    <footer>运行方式智能调整平台A <span>V0.5.1 · 四节点贯通演示</span></footer>
+  </main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="model-contract.js?v=3"></script>
+<script src="api-adapters.js?v=3"></script>
+<script src="app.js?v=3"></script>
+<script src="advanced.js?v=3"></script>
+<script src="workflow-core.js?v=4"></script>
+<script src="services-v4.js?v=4"></script>
+<script src="workflow-ui.js?v=4"></script>
+<script src="assets/geography/dali-reference.js"></script>
+<script src="workflow-io.js?v=4"></script>
+<script src="visual-map.js?v=5"></script>
+<script src="visual-workflow.js?v=5"></script>
+</body>
+</html>

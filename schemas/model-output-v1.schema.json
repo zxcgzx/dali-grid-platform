@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dali-grid.local/schemas/model-output-v1.schema.json",
+  "title": "大理电网结构化优化模型输出规范",
+  "type": "object",
+  "required": ["schema_version", "request_summary", "model_meta", "sets_parameters", "mathematical_model", "decision_variables", "objective", "constraints", "assumptions", "missing_information", "structural_changes", "solver_specification", "code", "validation", "provenance"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "request_summary": { "type": "string" },
+    "model_meta": {
+      "type": "object",
+      "required": ["problem_type", "system", "time_horizon", "model_level"],
+      "properties": {
+        "problem_type": { "type": "string" },
+        "system": { "type": "string" },
+        "time_horizon": { "type": ["string", "null"] },
+        "model_level": { "enum": ["L1", "L2", "L3", "L4"] },
+        "base_model_version": { "type": ["string", "null"] }
+      }
+    },
+    "sets_parameters": { "type": "array", "items": { "$ref": "#/$defs/modelItem" } },
+    "mathematical_model": {
+      "type": "object",
+      "required": ["formulation", "equations", "notes"],
+      "properties": {
+        "formulation": { "type": "string" },
+        "equations": { "type": "array", "items": { "$ref": "#/$defs/modelItem" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "decision_variables": { "type": "array", "items": { "$ref": "#/$defs/modelItem" } },
+    "objective": {
+      "type": "object",
+      "required": ["sense", "expression", "terms", "rationale"],
+      "properties": {
+        "sense": { "enum": ["minimize", "maximize"] },
+        "expression": { "type": "string" },
+        "terms": { "type": "array", "items": { "$ref": "#/$defs/modelItem" } },
+        "rationale": { "type": "string" }
+      }
+    },
+    "constraints": { "type": "array", "items": { "$ref": "#/$defs/modelItem" } },
+    "assumptions": { "type": "array", "items": { "type": "string" } },
+    "missing_information": { "type": "array", "items": { "type": "string" } },
+    "structural_changes": { "type": "array", "items": { "$ref": "#/$defs/modelItem" } },
+    "solver_specification": {
+      "type": "object",
+      "required": ["solver", "tolerance", "output_settings"],
+      "properties": {
+        "solver": { "type": ["string", "null"] },
+        "tolerance": { "type": ["string", "number", "null"] },
+        "output_settings": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "code": {
+      "type": "object",
+      "required": ["language", "framework", "entrypoint", "source", "dependencies"],
+      "properties": {
+        "language": { "type": "string" },
+        "framework": { "type": "string" },
+        "entrypoint": { "type": "string" },
+        "source": { "type": "string" },
+        "dependencies": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": ["syntax", "dimensions", "physical", "solver_readiness", "findings"],
+      "properties": {
+        "syntax": { "enum": ["pending", "passed", "failed", "not_run"] },
+        "dimensions": { "enum": ["pending", "passed", "failed", "not_run"] },
+        "physical": { "enum": ["pending", "passed", "failed", "not_run"] },
+        "solver_readiness": { "enum": ["pending", "passed", "failed", "not_run"] },
+        "findings": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_case", "model_name", "generated_at"],
+      "properties": {
+        "source_case": { "type": ["string", "null"] },
+        "model_name": { "type": ["string", "null"] },
+        "generated_at": { "type": ["string", "null"] }
+      }
+    }
+  },
+  "$defs": {
+    "modelItem": {
+      "type": "object",
+      "required": ["id", "name", "expression", "source", "status"],
+      "properties": {
+        "id": { "type": "string" },
+        "symbol": { "type": ["string", "null"] },
+        "name": { "type": "string" },
+        "expression": { "type": "string" },
+        "unit": { "type": ["string", "null"] },
+        "scope": { "type": ["string", "null"] },
+        "source": { "type": "string" },
+        "status": { "enum": ["proposed", "confirmed", "pending", "rejected"] }
+      }
+    }
+  }
+}

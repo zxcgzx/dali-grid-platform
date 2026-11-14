@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "课题3风险意见接入草案",
+  "type": "object",
+  "required": [
+    "task_id",
+    "model_version",
+    "model_hash",
+    "requirements_revision",
+    "data_fingerprint",
+    "risk_id",
+    "findings",
+    "recommended_changes"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "model_hash": {
+      "type": "string"
+    },
+    "requirements_revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "data_fingerprint": {
+      "type": "string"
+    },
+    "risk_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "risk_level": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "message",
+          "evidence"
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "recommended_changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "expression",
+          "evidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "constraint",
+              "objective",
+              "parameter"
+            ]
+          },
+          "expression": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "request_summary": "格式预览：用于展示结构化模型结果的分区，不代表实际模型生成结果。",
+  "model_meta": {
+    "problem_type": "交流最优潮流（ACOPF）",
+    "system": "IEEE 39节点系统（case39）",
+    "time_horizon": null,
+    "model_level": "L1",
+    "model_level_name": "显式参数修改型建模"
+  },
+  "sets_parameters": [],
+  "mathematical_model": {
+    "formulation": "等待远程模型API生成数学模型表达",
+    "equations": [],
+    "notes": ["数学模型表达需与决策变量、约束编号对应"]
+  },
+  "decision_variables": [],
+  "objective": {
+    "sense": "minimize",
+    "expression": "等待模型生成",
+    "terms": [],
+    "rationale": "等待模型生成目标函数说明"
+  },
+  "constraints": [],
+  "assumptions": [],
+  "missing_information": ["基础系统数据及边界条件需绑定确认"],
+  "structural_changes": [],
+  "solver_specification": {
+    "solver": null,
+    "tolerance": null,
+    "output_settings": []
+  },
+  "code": {
+    "language": "MATLAB",
+    "framework": "MATPOWER",
+    "entrypoint": "待生成",
+    "source": "% 示例占位，非执行代码",
+    "dependencies": ["MATPOWER"]
+  },
+  "validation": {
+    "syntax": "pending",
+    "dimensions": "pending",
+    "physical": "pending",
+    "solver_readiness": "pending",
+    "findings": ["尚未执行独立校验"]
+  },
+  "provenance": {
+    "source_case": "E.1",
+    "model_name": null,
+    "generated_at": null
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "release": "0.7.0",
+  "title": "运行方式智能调整平台A",
+  "source_archive": {
+    "name": "905节点计算.zip",
+    "bytes": 77954719,
+    "sha256": "d11360489035fae12140b080c116fdff9a086b8398fde54a19287d117b13184c"
+  },
+  "raw_snapshot": {
+    "name": "pasExp_20261004_153500_1.txt",
+    "bytes": 268861,
+    "sha256": "85f724d78dfed663da29127f0da1b1cab71ace41e72c6e6cf6acea697d08509c"
+  },
+  "matlab_package": {
+    "name": "dali_matlab_v1.3.zip",
+    "bytes": 123178,
+    "sha256": "36656cd1441fc3379e1eae5ca836d619ab2d1bca93d7b58c4214495d36d279f1"
+  },
+  "ipopt_package": {
+    "name": "OTS905_IPOPT_v0.6_fast60_update.zip",
+    "bytes": 128128,
+    "sha256": "8aca98e84fa536b31d7fae3565358d60b04b4c0370e793a4e913cab42086852d"
+  },
+  "data_counts": {
+    "buses": 905,
+    "generators": 237,
+    "branches": 1000,
+    "bridges": 775,
+    "mesh": 225,
+    "mesh110": 107,
+    "parallel_groups": 67,
+    "multi_gen_buses": 61,
+    "components": 1
+  },
+  "quality_counts": {
+    "vm_high": 231,
+    "vm_low": 2,
+    "pg_bounds": 101,
+    "rate_zero": 5,
+    "negative_load": 248,
+    "equivalent": 2,
+    "cost_missing": 237,
+    "renewable_missing": 0
+  }
+}

@@ -4,7 +4,7 @@ services:
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: python releases/v051-platform-a/serve_cloud.py
+    startCommand: python releases/v07-modeling-first-905/serve_cloud.py
     healthCheckPath: /healthz
     autoDeployTrigger: commit
     envVars:

@@ -1,0 +1,12 @@
+{
+  "release": "0.7.0",
+  "title": "运行方式智能调整平台A",
+  "data": "DALI905",
+  "counts": {
+    "buses": 905,
+    "generators": 237,
+    "branches": 1000
+  },
+  "solver_mode": "external_black_box",
+  "default_port": 8770
+}

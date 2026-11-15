@@ -1,4 +1,11 @@
-# 运行方式智能调整平台A
+# 运行方式智能调整平台A V0.7
+
+当前云端版本：releases/v07-modeling-first-905；905母线、237机组、1000支路。
+启动：python releases/v07-modeling-first-905/serve_cloud.py。
+工作流：需求 → L1—L4建模 → 方程确认 → 分层校验 → 独立求解黑盒 → 结果与风险协商。
+V0.7不在网页服务器内执行优化求解，IPOPT/COPT/Gurobi通过独立API接入；归档结果单独标记。
+API网关需配置 DALI_API_ALLOWED_HOSTS，访客使用自己的密钥。原始工程data/source只保留本机；运行数据和案例归档随版本部署。
+以下为旧版文档，以本节及V0.7目录说明为准。
 
 当前发布版本为 `releases/v051-platform-a`。完整云端演示由 Python 提供九模块界面、参数编译和 SciPy/HiGHS 四节点真实求解。
 
